@@ -21,3 +21,20 @@ int main() {
 
     long long sum;
     double total_time_dynamic = 0.0;
+    
+    for (int run = 0; run < RUNS; run++) {
+        sum = 0;
+        double start_time = omp_get_wtime();
+
+        // Parallel summation using dynamic scheduling with reduction
+        #pragma omp parallel for reduction(+:sum) schedule(dynamic, 1000)
+        for (int i = 0; i < SIZE; i++) {
+            sum += arr[i];
+        }
+
+        double end_time = omp_get_wtime();
+        double time_taken = (end_time - start_time) * 1000;
+        total_time_dynamic += time_taken;
+
+        printf("Dynamic - Run %d: Sum = %lld, Time = %.2f ms\n", run + 1, sum, time_taken);
+    }
