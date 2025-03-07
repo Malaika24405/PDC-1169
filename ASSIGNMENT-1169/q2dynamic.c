@@ -38,3 +38,10 @@ int main() {
 
         printf("Dynamic - Run %d: Sum = %lld, Time = %.2f ms\n", run + 1, sum, time_taken);
     }
+    // Compute and display average execution time over multiple runs
+    printf("\nAverage execution time (Dynamic): %.2f ms\n", total_time_dynamic / RUNS);
+
+    // Free allocated memory
+    free(arr);
+    return 0;
+}
