@@ -37,4 +37,13 @@ for (int run = 0; run < RUNS; run++) {
 
     printf("Run %d - Sum: %lld, Time taken: %.2f ms\n", run + 1, sum, time_taken);
 }
+// Compute average execution time
+double average_time = total_time / RUNS;
+printf("\nAverage execution time over %d runs: %.2f ms\n", RUNS, average_time);
+
+free(arr); // Free allocated memory
+return 0;
+}
+
+
 
